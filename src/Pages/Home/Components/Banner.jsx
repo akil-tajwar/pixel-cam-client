@@ -4,7 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Banner = () => {
     return (
-        <Carousel className='w-3/4 mx-auto mt-14 text-center mb-20'>
+        <Carousel className='w-3/4 mx-auto mt-16 text-center mb-20'>
             <div>
                 <img className='rounded-lg' src="/public/banner2.jpg" />
             </div>

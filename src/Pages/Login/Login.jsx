@@ -6,7 +6,7 @@ const Login = () => {
         <div className='pt-40'>
             <div className='grid grid-cols-2 gap-40 w-3/4 mx-auto'>
                 <div className='w-full mx-auto mt-14'>
-                    <img src="/login.svg" alt="" />
+                    <img className='w-full' src="/login.svg" alt="" />
                 </div>
                 <div className='mx-auto w-full bg-[#171818] rounded-lg p-8 mt-20 mb-4'>
                     <h2 className='text-4xl text-center text-white font-semibold mb-3'>Login</h2>
