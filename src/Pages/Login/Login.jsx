@@ -1,24 +1,40 @@
 import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Link } from 'react-router-dom';
 
-const Banner = () => {
+const Login = () => {
     return (
-        <Carousel className='w-3/4 mx-auto mt-14 text-center mb-20'>
-            <div>
-                <img className='rounded-lg' src="/public/banner2.jpg" />
+        <div className='pt-40'>
+            <div className='grid grid-cols-2 gap-40 w-3/4 mx-auto'>
+                <div className='w-full mx-auto mt-14'>
+                    <img src="/login.svg" alt="" />
+                </div>
+                <div className='mx-auto w-full bg-[#171818] rounded-lg p-8 mt-20 mb-4'>
+                    <h2 className='text-4xl text-center text-white font-semibold mb-3'>Login</h2>
+                    <form>
+                        <div className=''>
+                            <div className='pb-2'>
+                                <label htmlFor="email">Email</label><br />
+                                <input className='bg-[#f5f5f5] rounded p-2 border-slate-300 border w-full' type="email" name="email" id="" required />
+                            </div>
+                            <div className='pb-2'>
+                                <label htmlFor="password">Password</label><br />
+                                <input className='bg-[#f5f5f5] rounded p-2 border-slate-300 border w-full' type="password" name="password" id="" required />
+                            </div>
+                        </div>
+                        <button className='w-full mt-5 bg-[#00DCF4] rounded text-black font-semibold p-2 mb-3'>Login</button><br />
+                    </form>
+                    <p className='text-center text-white'>--------- or ---------</p>
+                    <div className='flex gap-2 mb-3'>
+                        <button className='w-full bg-[#00DCF4] rounded text-black font-semibold p-2 mt-3'>Google</button>
+                    </div>
+                    <div className='text-center'>
+                        <small>New to Turbo Toy Car? <Link to='/signup' className='text-[#1d7edd] font-semibold'>Create new account</Link></small>
+                    </div>
+                </div>
             </div>
-            <div>
-                <img className='rounded-lg' src="/public/banner3.jpg" />
-            </div>
-            <div>
-                <img className='rounded-lg' src="/public/banner4.jpg" />
-            </div>
-            <div>
-                <img className='rounded-lg' src="/public/banner1.jpg" />
-            </div>
-        </Carousel>
+            <p className='text-red-800 text-center font-semibold mb-20'></p>
+        </div>
     );
 };
 
-export default Banner;
+export default Login;
