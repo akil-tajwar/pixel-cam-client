@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Signup = () => {
+    
     return (
         <div className='pt-40'>
             <div className='grid grid-cols-2 gap-40 w-3/4 mx-auto'>
