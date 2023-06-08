@@ -13,11 +13,11 @@ const Login = () => {
                     <form>
                         <div className=''>
                             <div className='pb-2'>
-                                <label htmlFor="email">Email</label><br />
+                                <label className='text-white' htmlFor="email">Email</label><br />
                                 <input className='bg-[#f5f5f5] rounded p-2 border-slate-300 border w-full' type="email" name="email" id="" required />
                             </div>
                             <div className='pb-2'>
-                                <label htmlFor="password">Password</label><br />
+                                <label className='text-white' htmlFor="password">Password</label><br />
                                 <input className='bg-[#f5f5f5] rounded p-2 border-slate-300 border w-full' type="password" name="password" id="" required />
                             </div>
                         </div>
@@ -28,7 +28,7 @@ const Login = () => {
                         <button className='w-full bg-[#00DCF4] rounded text-black font-semibold p-2 mt-3'>Google</button>
                     </div>
                     <div className='text-center'>
-                        <small>New to Turbo Toy Car? <Link to='/signup' className='text-[#1d7edd] font-semibold'>Create new account</Link></small>
+                        <small><span className='text-white'>New to Turbo Toy Car?</span> <Link to='/signup' className='text-[#1d7edd] font-semibold'>Create new account</Link></small>
                     </div>
                 </div>
             </div>
