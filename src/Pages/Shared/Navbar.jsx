@@ -10,10 +10,10 @@ const Navbar = () => {
     }, [theme])
     const handleToggle = (e) => {
         if(e.target.checked) {
-            setTheme('dark');
+            setTheme('light');
         }
         else {
-            setTheme('light');
+            setTheme('dark');
         }
     }
     return (
