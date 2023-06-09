@@ -31,7 +31,7 @@ const Navbar = () => {
                     <div className='flex gap-2 justify-center items-center'>
                         <img className='w-14' src="/public/pixelcam.png" alt="" />
                         <div>
-                            <h3 className="text-3xl text-[#00dcf4] font-semibold">P<span className='text-[#ff9523]'>i</span>xelCam Academy</h3>
+                            <h3 className="text-3xl text-[#00dcf4] font-semibold">P<span className='text-[#ff9523]'>i</span><span className='text-[#00d776]'>x</span><span className='text-[#ff14ff]'>e</span><span className='text-[#dfc500]'>l</span>Cam</h3>
                         </div>
                     </div>
                     <div className='flex flex-row gap-9 font-semibold justify-center items-center'>
