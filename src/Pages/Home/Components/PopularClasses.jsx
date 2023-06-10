@@ -16,8 +16,14 @@ const PopularClasses = () => {
             <div className='grid grid-cols-3 gap-10 mt-4 mb-10 w-3/4 mx-auto'>
                 {
                     popular.map(item => <div item={item} key={item._id}>
-                        <div className='w-full h-full relative'>
-                            <img className='w-full h-full object-cover' src={item.image} alt="" />
+                        <div className='border-2 border-[#171818]'>
+                            <div className='w-full h-full relative'>
+                                <img className='w-full h-full object-cover' src={item.image} alt="" />
+                            </div>
+                            <div className='p-3'>
+                                <h3 className='text-3xl font-semibold pb-2'>{item.ins_name}</h3>
+                                <p>Price: ${item.price}</p>
+                            </div>
                         </div>
                     </div>)
                 }
