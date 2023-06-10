@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../Shared/SectionTitle';
 
-const PopularClasses = () => {
-    const [classes, setClasses] = useState([]);
+const PopularInstructors = () => {
+    const [instructors, setInstructors] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('http://localhost:5000/instructors')
             .then(res => res.json())
-            .then(data => setClasses(data))
+            .then(data => setInstructors(data))
             .catch(error => console.log(error))
     }, [])
-    const popular = classes.filter(item => item.name === 'Popular');
+    const popular = instructors.filter(item => item.category === 'Popular');
     return (
         <div>
-            <SectionTitle title={'Popular Classes'}></SectionTitle>
+            <SectionTitle title={'Popular Instructors'}></SectionTitle>
             <div className='grid grid-cols-3 gap-10 mt-4 mb-20 w-3/4 mx-auto'>
                 {
                     popular.map(item => <div item={item} key={item._id}>
@@ -21,8 +21,8 @@ const PopularClasses = () => {
                                 <img className='w-full h-full object-cover' src={item.image} alt="" />
                             </div>
                             <div className='p-3'>
-                                <h3 className='text-3xl font-semibold pb-2'>{item.ins_name}</h3>
-                                <p>Price: ${item.price}</p>
+                                <h3 className='text-3xl font-semibold pb-2'>{item.name}</h3>
+                                <p>email: {item.email}</p>
                             </div>
                         </div>
                     </div>)
@@ -32,4 +32,4 @@ const PopularClasses = () => {
     );
 };
 
-export default PopularClasses;
+export default PopularInstructors;

@@ -31,7 +31,7 @@ const Banner = () => {
             </div>
             <div className='bg-[url(/public/banner1.jpg)] bg-cover'>
                 <div className='bg-black bg-opacity-80 grid grid-cols-3 gap-5 justify-center items-center text-white p-20'>
-                    <h1 className='text-7xl text-left'>Unlock Your Potential</h1>
+                    <h1 className='text-7xl text-left'>Unlock Your Potential Skill</h1>
                     <div className='col-span-2'>
                         <img className='' src="/public/banner1.jpg" alt="" />
                     </div>
