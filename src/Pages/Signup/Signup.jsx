@@ -33,6 +33,14 @@ const Signup = () => {
             setError('Password and confirm password does not match');
             return;
         }
+        else if(!/(?=.*[A-Z])/.test(password)){
+            setError('Please use at least one uppercase letter');
+            return;
+        }
+        else if(!/(?=.*[!@#$&*])/.test(password)){
+            setError('Please use at least one special character');
+            return;
+        }
         createUser(email, password)
             .then(result => {
                 const loggedUser = result.user;
