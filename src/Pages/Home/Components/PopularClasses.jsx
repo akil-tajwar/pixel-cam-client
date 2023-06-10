@@ -13,7 +13,7 @@ const PopularClasses = () => {
     return (
         <div>
             <SectionTitle title={'Popular Classes'}></SectionTitle>
-            <div className='grid grid-cols-3 gap-10 mt-4 mb-20 w-3/4 mx-auto'>
+            <div className='grid lg:grid-cols-3 grid-cols-1 gap-10 mt-4 mb-20 w-3/4 mx-auto'>
                 {
                     popular.map(item => <div item={item} key={item._id}>
                         <div className='border-2 border-[#171818]'>
