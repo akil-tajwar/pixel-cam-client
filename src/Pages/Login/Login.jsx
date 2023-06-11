@@ -3,8 +3,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { AuthContext } from '../../Providers/AuthProvider';
 import { app } from '../../Firebase/firebase.init';
+import { useForm } from 'react-hook-form';
 
 const Login = () => {
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
     const { signIn } = useContext(AuthContext);
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
@@ -26,14 +29,9 @@ const Login = () => {
                 setError(error.message);
             });
     }
-    const handleLogin = (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
-
-        signIn(email, password)
+    const onSubmit = (data) => {
+        console.log(data);
+        signIn(data.email, data.password)
             .then(result => {
                 navigate(from, { replace: true });
                 const loggedUser = result.user;
@@ -53,7 +51,7 @@ const Login = () => {
             setError('Your password is wrong');
             return;
         }
-        else if (password.length === 0 || email.length === 0) {
+        else if (data.password.length === 0 || data.email.length === 0) {
             setError('You can not submit an empty email or password field');
             return;
         }
@@ -66,18 +64,18 @@ const Login = () => {
                 </div>
                 <div className='mx-auto w-full bg-[#171818] rounded-lg p-8 mt-20 mb-4'>
                     <h2 className='text-4xl text-center text-white font-semibold mb-3'>Login</h2>
-                    <form onSubmit={handleLogin}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div className=''>
                             <div className='pb-2'>
                                 <label className='text-white' htmlFor="email">Email</label><br />
-                                <input className='bg-[#f5f5f5] rounded p-2 border-slate-300 border w-full' type="email" name="email" id="" required />
+                                <input {...register("email", { required: true })} className=' bg-white text-black rounded p-2 border-slate-300 border w-full' type="email" name="email" id="" />
                             </div>
                             <div className='pb-2'>
                                 <label className='text-white' htmlFor="password">Password</label><br />
-                                <input className='bg-[#f5f5f5] rounded p-2 border-slate-300 border w-full' type="password" name="password" id="" required />
+                                <input {...register("password", { required: true })} className=' bg-white text-black rounded p-2 border-slate-300 border w-full' type="password" name="password" id="" />
                             </div>
                         </div>
-                        <button className='w-full mt-5 bg-[#2cae74] rounded text-black font-semibold p-2 mb-3'>Login</button><br />
+                        <input className='w-full mt-5 bg-[#2cae74] rounded text-black font-semibold p-2 mb-3 cursor-pointer' type="submit" value='Login' /><br />
                     </form>
                     <p className='text-center text-white'>--------- or ---------</p>
                     <div className='flex gap-2 mb-3'>

@@ -17,7 +17,7 @@ const Footer = () => {
                             <ul className='mt-6 flex flex-col gap-2'>
                                 <li className='flex gap-2 items-center'><MdLocationOn className='text-[#2cae74] text-2xl' /><p>828 Curtis Ferry, New York, USA</p></li>
                                 <li className='flex gap-2 items-center'><BsTelephoneFill className='text-[#2cae74] text-xl' /><p>+8 (800) 238 3597 (admin)</p></li>
-                                <li className='flex gap-2 items-center'><MdEmail className='text-[#2cae74] text-2xl' /><p>turbotoycar@gmail.com</p></li>
+                                <li className='flex gap-2 items-center'><MdEmail className='text-[#2cae74] text-2xl' /><p>pixelcam@gmail.com</p></li>
                             </ul>
                         </div>
                     </div>
