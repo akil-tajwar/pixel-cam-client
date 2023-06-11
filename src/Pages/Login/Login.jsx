@@ -77,11 +77,11 @@ const Login = () => {
                                 <input className='bg-[#f5f5f5] rounded p-2 border-slate-300 border w-full' type="password" name="password" id="" required />
                             </div>
                         </div>
-                        <button className='w-full mt-5 bg-[#00DCF4] rounded text-black font-semibold p-2 mb-3'>Login</button><br />
+                        <button className='w-full mt-5 bg-[#2cae74] rounded text-black font-semibold p-2 mb-3'>Login</button><br />
                     </form>
                     <p className='text-center text-white'>--------- or ---------</p>
                     <div className='flex gap-2 mb-3'>
-                        <button onClick={googleLogin} className='w-full bg-[#00DCF4] rounded text-black font-semibold p-2 mt-3'>Google</button>
+                        <button onClick={googleLogin} className='w-full bg-[#2cae74] rounded text-black font-semibold p-2 mt-3'>Google</button>
                     </div>
                     <div className='text-center'>
                         <small><span className='text-white'>New to Turbo Toy Car?</span> <Link to='/signup' className='text-[#1d7edd] font-semibold'>Create new account</Link></small>

@@ -97,7 +97,7 @@ const Signup = () => {
                             <label className='text-white' htmlFor="text">Photo URL</label><br />
                             <input className='bg-white text-black rounded p-2 border-slate-300 border w-full' type="text" name="photo" id="" required />
                         </div>
-                        <button className='w-full mt-5 bg-[#00DCF4] rounded text-black font-semibold p-2 mb-3'>Signup</button><br />
+                        <button className='w-full mt-5 bg-[#2cae74] rounded text-black font-semibold p-2 mb-3'>Signup</button><br />
                     </form>
                     <div className='text-center'>
                         <small><span className='text-white'>Already have an account?</span> <Link to='/login' className='text-[#1d7edd] font-semibold'>Create new account</Link></small>

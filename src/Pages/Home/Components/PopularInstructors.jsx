@@ -21,7 +21,7 @@ const PopularInstructors = () => {
                                 <img className='w-full h-full object-cover' src={item.image} alt="" />
                             </div>
                             <div className='p-3'>
-                                <h3 className='text-3xl font-semibold pb-2'>{item.name}</h3>
+                                <h3 className='text-3xl text-[#2cae74] font-semibold pb-2'>{item.name}</h3>
                                 <p>email: {item.email}</p>
                             </div>
                         </div>

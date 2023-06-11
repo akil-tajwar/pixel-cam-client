@@ -21,8 +21,8 @@ const Instructors = () => {
                                 <img className='w-full h-full object-cover' src={item.image} alt="" />
                             </div>
                             <div className='p-3'>
-                                <h3 className='text-3xl font-semibold pb-2'>{item.name}</h3>
-                                <p>email: {item.email}</p>
+                                <h3 className='text-4xl font-semibold pb-2 text-[#2cae74]'>{item.name}</h3>
+                                <p className='text-xl'>email: {item.email}</p>
                             </div>
                         </div>
                     </div>)
