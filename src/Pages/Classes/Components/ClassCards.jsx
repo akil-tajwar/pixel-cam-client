@@ -23,7 +23,7 @@ const ClassCards = () => {
                                 <h3 className='text-4xl font-semibold text-[#2cae74]'>{item.name}</h3>
                                 <p className='font-semibold pb-3 text-xl'>Instructor: {item.ins_name}</p>
                                 <p className='text-xl'>Available Seats: {item.seats}</p>
-                                <p className='text-xl'>Price: {item.price}</p>
+                                <p className='text-xl'>Price: ${item.price}</p>
                             </div>
                             <button className='bg-[#2cae74] w-full text-black py-2 text-xl font-semibold'>Select</button>
                         </div>

@@ -4,16 +4,43 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import Navbar from '../Shared/Navbar';
 import { updateProfile } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
 const Signup = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
+    const [passwordType, setPasswordType] = useState("password");
+    const [passwordInput, setPasswordInput] = useState("");
+    const [passwordType2, setPasswordType2] = useState("password");
+    const [passwordInput2, setPasswordInput2] = useState("");
     const [error, setError] = useState('');
     const { user, createUser } = useContext(AuthContext);
     const { logout, setLogout } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || "/login";
+
+    const handlePasswordChange = (evnt) => {
+        setPasswordInput(evnt.target.value);
+    }
+    const handlePasswordChange2 = (evnt) => {
+        setPasswordInput2(evnt.target.value);
+    }
+    const togglePassword = () => {
+        if (passwordType === "password") {
+            setPasswordType("text")
+            return;
+        }
+        setPasswordType("password")
+    }
+    const togglePassword2 = () => {
+        if (passwordType2 === "password") {
+            setPasswordType2("text")
+            return;
+        }
+        setPasswordType2("password")
+    }
+
     const onSubmit = (data) => {
         console.log(data);
         setError('');
@@ -67,26 +94,32 @@ const Signup = () => {
                         </div>
                         <div className='flex gap-5'>
                             <div className='pb-2 w-full'>
-                                <label className='text-white' htmlFor="password">Password</label><br />
-                                <input
-                                    {...register("password", {
-                                        required: "Password is required",
-                                        minLength: 6,
-                                        maxLength: 20,
-                                        pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/
-                                    })} type='password' className='bg-white text-black rounded p-2 border-slate-300 border w-full' />
-                                {errors.password?.type === 'required' && <p className='text-red-600 font-bold'>First name is required</p>}
+                                <label className='text-white' >Password</label><br />
+                                <div className='flex'>
+                                    <input
+                                        {...register("password", {
+                                            required: "Password is required",
+                                            minLength: 6,
+                                            maxLength: 20,
+                                            pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/
+                                        })} type={passwordType} onChange={handlePasswordChange} value={passwordInput} className='bg-white text-black rounded-s p-2 border-slate-300 border w-full' />
+                                    <button onClick={togglePassword} className='bg-white text-black px-3 rounded-r'>{passwordType === "password" ? <BsEyeSlash /> : <BsEye />}</button>
+                                </div>
+                                {errors.password?.type === 'required' && <p className='text-red-600 font-bold'>Password is required</p>}
                                 {errors.password?.type === 'pattern' && <p className='text-red-600 font-bold'>Password must have 1 uppercase and 1 special characters</p>}
                                 {errors.password?.type === 'minLength' && <p className='text-red-600 font-bold'>Paassword must have 6 characters</p>}
                             </div>
                             <div className='pb-2 w-full'>
-                                <label className='text-white' htmlFor="password">Confirm Password</label><br />
-                                <input {...register("confirm", {
-                                    required: true,
-                                    minLength: 6,
-                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/
-                                })} className='bg-white text-black rounded p-2 border-slate-300 border w-full' type="password" name="confirm" id="" />
-                                {errors.confirm?.type === 'required' && <p className='text-red-600 font-bold'>First name is required</p>}
+                                <label className='text-white'>Confirm Password</label><br />
+                                <div className='flex'>
+                                    <input {...register("confirm", {
+                                        required: true,
+                                        minLength: 6,
+                                        pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/
+                                    })} type={passwordType2} onChange={handlePasswordChange2} value={passwordInput2} className='bg-white text-black rounded-s p-2 border-slate-300 border w-full' name="confirm" id="" />
+                                    <button onClick={togglePassword2} className='bg-white text-black px-3 rounded-r'>{passwordType2 === "password" ? <BsEyeSlash /> : <BsEye />}</button>
+                                </div>
+                                {errors.confirm?.type === 'required' && <p className='text-red-600 font-bold'>Password is required</p>}
                                 {errors.confirm?.type === 'pattern' && <p className='text-red-600 font-bold'>Password must have 1 uppercase and 1 special characters</p>}
                                 {errors.confirm?.type === 'minLength' && <p className='text-red-600 font-bold'>Paassword must have 6 characters</p>}
                             </div>

@@ -4,10 +4,14 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { AuthContext } from '../../Providers/AuthProvider';
 import { app } from '../../Firebase/firebase.init';
 import { useForm } from 'react-hook-form';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
+
 
 const Login = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
+    const [passwordType, setPasswordType] = useState("password");
+    const [passwordInput, setPasswordInput] = useState("");
     const { signIn } = useContext(AuthContext);
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
@@ -16,6 +20,18 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || "/";
+
+    const handlePasswordChange = (evnt) => {
+        setPasswordInput(evnt.target.value);
+    }
+    const togglePassword = () => {
+        if (passwordType === "password") {
+            setPasswordType("text")
+            return;
+        }
+        setPasswordType("password")
+    }
+
     const googleLogin = () => {
         signInWithPopup(auth, provider)
             .then((result) => {
@@ -71,8 +87,11 @@ const Login = () => {
                                 <input {...register("email", { required: true })} className=' bg-white text-black rounded p-2 border-slate-300 border w-full' type="email" name="email" id="" />
                             </div>
                             <div className='pb-2'>
-                                <label className='text-white' htmlFor="password">Password</label><br />
-                                <input {...register("password", { required: true })} className=' bg-white text-black rounded p-2 border-slate-300 border w-full' type="password" name="password" id="" />
+                                <label className='text-white'>Password</label><br />
+                                <div className='flex'>
+                                    <input {...register("password", { required: true })} type={passwordType} onChange={handlePasswordChange} value={passwordInput} className=' bg-white text-black rounded-s p-2 border-slate-300 border w-full' name="password" id="" />
+                                    <button onClick={togglePassword} className='bg-white text-black px-3 rounded-r'>{passwordType === "password" ? <BsEyeSlash /> : <BsEye />}</button>
+                                </div>
                             </div>
                         </div>
                         <input className='w-full mt-5 bg-[#2cae74] rounded text-black font-semibold p-2 mb-3 cursor-pointer' type="submit" value='Login' /><br />
