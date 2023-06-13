@@ -11,13 +11,13 @@ const ClassCards = () => {
             .catch(error => console.log(error))
     }, [])
     const selectClass = (item) => {
-        const photo = item.photo;
+        const image = item.image;
         const itemName = item.name;
         const isntructorName = item.ins_name;
         const seats = item.seats;
         const price = item.price;
 
-        const newClass = { photo, itemName, isntructorName, seats, price };
+        const newClass = { image, itemName, isntructorName, seats, price };
         console.log(newClass);
         fetch('http://localhost:5000/selectClass', {
             method: 'POST',

@@ -1,7 +1,7 @@
 import React from 'react';
 
-const StudentDashboard = ({dashboard}) => {
-    const {itemName, isntructorName, price, image, category} = dashboard;
+const StudentDashboard = ({dashboard, handleDelete}) => {
+    const {itemName, isntructorName, price, image, category, _id} = dashboard;
     return (
         <div className='w-3/4 mx-auto'>
             <div className="border w-full mx-auto border-slate-400">
@@ -16,7 +16,7 @@ const StudentDashboard = ({dashboard}) => {
                     <p>${price}</p>
                     <p className='flex gap-2 justify-start'>
                         <div><button className='p-1 rounded w-16 bg-[#1d7edd] text-white'>Buy</button></div>
-                        <div><button className='p-1 rounded w-16 bg-red-500 text-white'>Delete</button></div>
+                        <div onClick={() => handleDelete(_id)}><button className='p-1 rounded w-16 bg-red-500 text-white'>Delete</button></div>
                     </p>
                 </div>
             </div>

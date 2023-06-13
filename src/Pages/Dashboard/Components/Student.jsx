@@ -2,19 +2,58 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import SectionTitle from '../../Shared/SectionTitle';
 import StudentDashboard from './StudentDashboard';
+import Swal from 'sweetalert2';
 
 const Student = () => {
     const { user } = useContext(AuthContext);
     const [selectClass, setSelectClass] = useState([]);
-    console.log(user.email);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/selectClass?email=${user.email}`)
-            .then(res => res.json())
-            .then(data => setSelectClass(data))
-            .catch(error => console.log(error))
-    })
-    
+       if (user?.email) {
+            fetch(`http://localhost:5000/selectClass?email=${user.email}`)
+                .then(res => res.json())
+                .then(data => setSelectClass(data))
+                .catch(error => console.log(error))
+        }
+    }, [user])
+    if (isLoading) {
+        <p>Loading...</p>
+    }
+
+    const handleDelete = (_id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/selectClass/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            const remaining = selectClass.filter(dashboard => dashboard._id !== _id);
+                            setMyToys(remaining);
+
+                        }
+                    })
+                    .catch(error => console.log(error))
+            }
+        })
+    }
+
     return (
         <div className='mt-36 mb-24'>
             <SectionTitle title={'Student Dashboard'}></SectionTitle>
@@ -29,7 +68,7 @@ const Student = () => {
                 </div>
             </div>
             {
-                selectClass.map(dashboard => <StudentDashboard dashboard={dashboard} key={dashboard._id}></StudentDashboard>)
+                selectClass.map(dashboard => <StudentDashboard handleDelete={handleDelete} dashboard={dashboard} key={dashboard._id}></StudentDashboard>)
             }
         </div>
     );
