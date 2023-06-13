@@ -45,7 +45,7 @@ const Student = () => {
                                 'success'
                             )
                             const remaining = selectClass.filter(dashboard => dashboard._id !== _id);
-                            setMyToys(remaining);
+                            setSelectClass(remaining);
 
                         }
                     })
