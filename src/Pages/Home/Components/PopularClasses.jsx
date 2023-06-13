@@ -9,7 +9,7 @@ const PopularClasses = () => {
             .then(data => setClasses(data))
             .catch(error => console.log(error))
     }, [])
-    const popular = classes.filter(item => item.name === 'Popular');
+    const popular = classes.filter(item => item.category === 'Popular');
     return (
         <div>
             <SectionTitle title={'Popular Classes'}></SectionTitle>
@@ -21,7 +21,8 @@ const PopularClasses = () => {
                                 <img className='w-full h-full object-cover' src={item.image} alt="" />
                             </div>
                             <div className='p-3'>
-                                <h3 className='text-3xl text-[#2cae74] font-semibold pb-2'>{item.ins_name}</h3>
+                                <h3 className='text-3xl text-[#2cae74] font-semibold'>{item.name}</h3>
+                                <p className='font-semibold pb-2 text-xl'>{item.ins_name}</p>
                                 <p>Price: ${item.price}</p>
                             </div>
                         </div>

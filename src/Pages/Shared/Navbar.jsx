@@ -34,10 +34,13 @@ const Navbar = () => {
                             <h3 className="text-3xl text-[#00dcf4] font-semibold">P<span className='text-[#ff9523]'>i</span><span className='text-[#00d776]'>x</span><span className='text-[#ff14ff]'>e</span><span className='text-[#dfc500]'>l</span>Cam</h3>
                         </div>
                     </div>
-                    <div className='grid lg:grid-cols-6 grid-cols-4 lg:gap-9 gap-x-6 font-semibold justify-center items-center'>
+                    <div className='grid lg:grid-cols-7 grid-cols-4 lg:gap-9 gap-x-6 font-semibold justify-center items-center'>
                         <Link className='hover:text-[#2cae74] text-center' to={'/'}>Home</Link>
                         <Link className='hover:text-[#2cae74] text-center' to={'/instructors'}>Instructors</Link>
                         <Link className='hover:text-[#2cae74] text-center' to={'/classes'}>Classes</Link>
+                        {
+                            user && <Link className='hover:text-[#2cae74] text-center' to={'/dashboard'}>Dashboard</Link>
+                        }
                         {
                             user ? <p onClick={handleLogout} className='hover:text-[#2cae74] text-center cursor-pointer'>Logout</p> : <Link className='hover:text-[#2cae74] text-center' to={'/login'}>Login</Link>
                         }

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import SectionTitle from '../Shared/SectionTitle';
 
 const Instructors = () => {
+    const { user } = useContext(AuthContext);
     const [instructors, setInstructors] = useState([]);
 
     useEffect(() => {

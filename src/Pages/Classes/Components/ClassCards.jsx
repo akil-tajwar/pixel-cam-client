@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../Shared/SectionTitle';
+import Swal from 'sweetalert2'
 
 const ClassCards = () => {
     const [classes, setClasses] = useState([]);
@@ -9,6 +10,35 @@ const ClassCards = () => {
             .then(data => setClasses(data))
             .catch(error => console.log(error))
     }, [])
+    const selectClass = (item) => {
+        const photo = item.photo;
+        const itemName = item.name;
+        const isntructorName = item.ins_name;
+        const seats = item.seats;
+        const price = item.price;
+
+        const newClass = { photo, itemName, isntructorName, seats, price };
+        console.log(newClass);
+        fetch('http://localhost:5000/selectClass', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newClass)
+        })
+        .then(req => req.json())
+        .then(data => {
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!!',
+                    text: 'Class is selected successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Done'
+                  })
+            }
+        })
+    }
     return (
         <div className='lg:mt-24 mt-36'>
             <SectionTitle title={'All Classes'}></SectionTitle>
@@ -25,7 +55,7 @@ const ClassCards = () => {
                                 <p className='text-xl'>Available Seats: {item.seats}</p>
                                 <p className='text-xl'>Price: ${item.price}</p>
                             </div>
-                            <button className='bg-[#2cae74] w-full text-black py-2 text-xl font-semibold'>Select</button>
+                            <button onClick={() => selectClass(item)} className='bg-[#2cae74] w-full text-black py-2 text-xl font-semibold'>Select</button>
                         </div>
                     </div>)
                 }
