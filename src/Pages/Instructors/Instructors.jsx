@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import SectionTitle from '../Shared/SectionTitle';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const Instructors = () => {
     const { user } = useContext(AuthContext);

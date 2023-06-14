@@ -1,5 +1,6 @@
 import React from 'react';
 import SectionTitle from '../../Shared/SectionTitle';
+import { Slide } from "react-awesome-reveal";
 
 const Faq = () => {
     return (
@@ -7,13 +8,13 @@ const Faq = () => {
             <SectionTitle title={'FAQ Section'}></SectionTitle>
             <div className='mb-20'>
                 <div className='flex lg:flex-row flex-col-reverse gap-10 w-11/12 lg:w-3/4 mx-auto'>
-                    <div data-aos="fade-right" className='w-11/12 lg:w-3/4 mx-auto flex flex-col gap-5 mt-7'>
+                    <div className='w-11/12 lg:w-3/4 mx-auto flex flex-col gap-5 mt-7'>
                         <div className='w-full mx-auto border-2 border-slate-200'>
                             <div className="collapse">
                                 <input type="checkbox" />
                                 <div className="collapse-title text-xl font-medium flex justify-between">
                                     <div>
-                                    Is prior experience required to join your photography school?
+                                        Is prior experience required to join your photography school?
                                     </div>
                                     <button>+</button>
                                 </div>
@@ -27,7 +28,7 @@ const Faq = () => {
                                 <input type="checkbox" />
                                 <div className="collapse-title text-xl font-medium flex justify-between">
                                     <div>
-                                    What type of photography courses do you offer?
+                                        What type of photography courses do you offer?
                                     </div>
                                     <button>+</button>
                                 </div>
@@ -41,7 +42,7 @@ const Faq = () => {
                                 <input type="checkbox" />
                                 <div className="collapse-title text-xl font-medium flex justify-between">
                                     <div>
-                                    What equipment do I need for the photography courses?
+                                        What equipment do I need for the photography courses?
                                     </div>
                                     <button>+</button>
                                 </div>
@@ -55,7 +56,7 @@ const Faq = () => {
                                 <input type="checkbox" />
                                 <div className="collapse-title text-xl font-medium flex justify-between">
                                     <div>
-                                    How are the classes structured?
+                                        How are the classes structured?
                                     </div>
                                     <button>+</button>
                                 </div>
@@ -69,7 +70,7 @@ const Faq = () => {
                                 <input type="checkbox" />
                                 <div className="collapse-title text-xl font-medium flex justify-between">
                                     <div>
-                                    What are the career prospects after completing the photography courses?
+                                        What are the career prospects after completing the photography courses?
                                     </div>
                                     <button>+</button>
                                 </div>
@@ -79,8 +80,10 @@ const Faq = () => {
                             </div>
                         </div>
                     </div>
-                    <div data-aos="fade-left" className=''>
-                        <img src="/faq.svg" alt="" />
+                    <div className=''>
+                        <Slide direction='right'>
+                            <img src="/faq.svg" alt="" />
+                        </Slide>
                     </div>
                 </div>
             </div>

@@ -10,16 +10,20 @@ const Student = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-       if (user?.email) {
+        if (user?.email) {
+            console.log(user.email);
             fetch(`http://localhost:5000/selectClass?email=${user.email}`)
                 .then(res => res.json())
-                .then(data => setSelectClass(data))
+                .then(data => {
+                    console.log(data);
+                    setSelectClass(data);
+                    setIsLoading(false);
+                })
                 .catch(error => console.log(error))
         }
-    }, [user])
-    if (isLoading) {
-        <p>Loading...</p>
-    }
+    }, [user?.email]);
+    console.log("selectClass:", selectClass);
+    
 
     const handleDelete = (_id) => {
         Swal.fire({
