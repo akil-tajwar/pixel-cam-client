@@ -12,7 +12,7 @@ const Student = () => {
     useEffect(() => {
         if (user?.email) {
             console.log(user.email);
-            fetch(`http://localhost:5000/selectClass?email=${user.email}`)
+            fetch(`https://pixel-cam-server.vercel.app/selectClass?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
@@ -36,7 +36,7 @@ const Student = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/selectClass/${_id}`, {
+                fetch(`https://pixel-cam-server.vercel.app/selectClass/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

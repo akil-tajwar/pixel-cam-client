@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 const ClassCards = () => {
     const [classes, setClasses] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://pixel-cam-server.vercel.app/classes')
             .then(res => res.json())
             .then(data => setClasses(data))
             .catch(error => console.log(error))
@@ -19,7 +19,7 @@ const ClassCards = () => {
 
         const newClass = { image, itemName, isntructorName, seats, price };
         console.log(newClass);
-        fetch('http://localhost:5000/selectClass', {
+        fetch('https://pixel-cam-server.vercel.app/selectClass', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

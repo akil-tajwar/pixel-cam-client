@@ -5,7 +5,7 @@ import { Fade, Zoom } from "react-awesome-reveal";
 const PopularInstructors = () => {
     const [instructors, setInstructors] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/instructors')
+        fetch('https://pixel-cam-server.vercel.app/instructors')
             .then(res => res.json())
             .then(data => setInstructors(data))
             .catch(error => console.log(error))

@@ -5,7 +5,7 @@ import { Zoom } from "react-awesome-reveal";
 const PopularClasses = () => {
     const [classes, setClasses] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://pixel-cam-server.vercel.app/classes')
             .then(res => res.json())
             .then(data => setClasses(data))
             .catch(error => console.log(error))
