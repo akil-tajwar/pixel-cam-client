@@ -13,7 +13,7 @@ const Banner = () => {
                     </Slide>
                     <div className='lg:col-span-2'>
                         <Slide direction='right'>
-                            <img className='text-right' src="/public/banner2.jpg" alt="" />
+                            <img className='text-right' src="/banner2.jpg" alt="" />
                         </Slide>
                     </div>
                 </div>
@@ -25,7 +25,7 @@ const Banner = () => {
                     </Slide>
                     <div className='lg:col-span-2'>
                         <Slide>
-                            <img className='' src="/public/banner3.jpg" alt="" />
+                            <img className='' src="/banner3.jpg" alt="" />
                         </Slide>
                     </div>
                 </div>
@@ -37,7 +37,7 @@ const Banner = () => {
                     </Slide>
                     <div className='lg:col-span-2'>
                         <Slide direction='up'>
-                            <img className='' src="/public/banner4.jpg" alt="" />
+                            <img className='' src="/banner4.jpg" alt="" />
                         </Slide>
                     </div>
                 </div>
@@ -49,7 +49,7 @@ const Banner = () => {
                     </Slide>
                     <div className='lg:col-span-2'>
                         <Slide direction='right'>
-                            <img className='' src="/public/banner1.jpg" alt="" />
+                            <img className='' src="/banner1.jpg" alt="" />
                         </Slide>
                     </div>
                 </div>
