@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import SectionTitle from '../../Shared/SectionTitle';
 import Swal from 'sweetalert2'
+import { useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const ClassCards = () => {
+    const { user } = useContext(AuthContext);
     const [classes, setClasses] = useState([]);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || "/login";
     useEffect(() => {
         fetch('https://pixel-cam-server.vercel.app/classes')
             .then(res => res.json())
@@ -11,33 +17,38 @@ const ClassCards = () => {
             .catch(error => console.log(error))
     }, [])
     const selectClass = (item) => {
-        const image = item.image;
-        const itemName = item.name;
-        const isntructorName = item.ins_name;
-        const seats = item.seats;
-        const price = item.price;
+        if (user) {
+            const image = item.image;
+            const itemName = item.name;
+            const isntructorName = item.ins_name;
+            const seats = item.seats;
+            const price = item.price;
 
-        const newClass = { image, itemName, isntructorName, seats, price };
-        console.log(newClass);
-        fetch('https://pixel-cam-server.vercel.app/selectClass', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newClass)
-        })
-        .then(req => req.json())
-        .then(data => {
-            console.log(data);
-            if(data.insertedId){
-                Swal.fire({
-                    title: 'Success!!',
-                    text: 'Class is selected successfully',
-                    icon: 'success',
-                    confirmButtonText: 'Done'
-                  })
-            }
-        })
+            const newClass = { image, itemName, isntructorName, seats, price };
+            console.log(newClass);
+            fetch('https://pixel-cam-server.vercel.app/selectClass', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(newClass)
+            })
+                .then(req => req.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.insertedId) {
+                        Swal.fire({
+                            title: 'Success!!',
+                            text: 'Class is selected successfully',
+                            icon: 'success',
+                            confirmButtonText: 'Done'
+                        })
+                    }
+                })
+        }
+        else{
+            navigate(from, { replace: true });
+        }
     }
     return (
         <div className='lg:mt-24 mt-36'>
