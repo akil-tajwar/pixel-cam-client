@@ -8,6 +8,7 @@ import Classes from "../Pages/Classes/Classes";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import Error from "../Pages/Shared/Error";
 
 export const router = createBrowserRouter([
     {
@@ -37,7 +38,11 @@ export const router = createBrowserRouter([
             {
                 path: 'signup',
                 element: <Signup></Signup>
-            }
+            },
         ]
     },
+    {
+        path: '*',
+        element: <Error></Error>
+    }
 ]);
